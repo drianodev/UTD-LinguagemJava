@@ -1,0 +1,38 @@
+package br.com.projeto.utd.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.projeto.utd.entity.Livro;
+import br.com.projeto.utd.service.LivroService;
+
+@Controller
+public class LivrariaController {
+	
+	@Autowired
+	LivroService servico;
+	
+	@RequestMapping("/")
+	public String paginaInicial(Model modelo) {
+		
+		List<Livro> livros = servico.listarLivros();
+		
+		modelo.addAttribute("livros", livros);
+		
+		return "index";
+	}
+	
+	@RequestMapping("/cadastro")
+	public String paginaCadastro(Model model) {
+		
+		Livro livro = new Livro();
+		
+		model.addAttribute("livro", livro);
+		
+		return "cadastrarlivro";
+	}
+}

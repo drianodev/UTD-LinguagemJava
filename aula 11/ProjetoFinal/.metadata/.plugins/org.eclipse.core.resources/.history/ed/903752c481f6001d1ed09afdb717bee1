@@ -1,0 +1,5 @@
+function confirmarDelecao(livroId) {
+  if (confirm("Tem certeza de que deseja deletar este livro?")) {
+    window.location.href = "/deletar/" + livroId;
+  }
+}

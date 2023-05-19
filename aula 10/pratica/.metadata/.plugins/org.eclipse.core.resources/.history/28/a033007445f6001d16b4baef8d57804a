@@ -1,0 +1,19 @@
+package br.com.projeto.utd.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.projeto.utd.entity.Livro;
+import br.com.projeto.utd.repository.LivroRepository;
+
+@Service
+public class LivroService {
+
+	@Autowired
+	LivroRepository repo;
+	
+	public void adicionar(Livro livro) {
+		
+		repo.save(livro);
+	}
+}
